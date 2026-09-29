@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Duolingo: aprende idiomas gratis, de forma divertida y efectiva.">
+<title>Duolingo: aprende inglés, francés y otros idiomas gratis</title>
+<link rel="icon" type="image/png" href="imagenes de duolingo web/logo icono redondo duolingo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<!-- si JS no corre, el IntersectionObserver nunca agrega .in y todo lo que
+     usa el sistema de reveal quedaría en opacity:0 para siempre — este
+     fallback lo fuerza a visible sin depender de JS -->
+<noscript><style>.reveal,.reveal-l,.reveal-r,.reveal-scale,.reveal-rotate,.reveal-bounce{opacity:1!important;transform:none!important;}</style></noscript>
+</head>
+<body>
+
+<header class="topbar" id="topbar">
+  <div class="topbar-inner">
+    <a href="https://www.duolingo.com/" class="logo"><img src="imagenes de duolingo web/logo duolingo texto recortado.png" alt="Duolingo"></a>
+    <div class="topbar-right-group">
+    <a href="https://www.duolingo.com/" class="btn btn-primary nav-cta" id="navCta">EMPIEZA AHORA</a>
+    <nav class="lang-dropdown" id="langDropdown" aria-label="Selector de idioma de la página">
+      <button class="lang-page-select" id="langBtn" aria-expanded="false" aria-controls="langDropdownPanel"><span class="lang-prefix">IDIOMA DE LA PÁGINA: </span>ESPAÑOL <span class="chev" aria-hidden="true">⌄</span></button>
+      <div class="lang-dropdown-panel" id="langDropdownPanel">
+        <a href="https://www.duolingo.com/">Deutsch</a>
+        <a href="https://www.duolingo.com/">English</a>
+        <a href="https://www.duolingo.com/" class="is-selected" aria-current="true">Español</a>
+        <a href="https://www.duolingo.com/">Français</a>
+        <a href="https://www.duolingo.com/">Italiano</a>
+        <a href="https://www.duolingo.com/">Português</a>
+        <a href="https://www.duolingo.com/">日本語</a>
+        <a href="https://www.duolingo.com/">한국어</a>
+        <a href="https://www.duolingo.com/">中文</a>
+      </div>
+    </nav>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="screen hero">
+  <div class="hero-inner">
+    <div class="hero-media">
+      <div class="hero-float">
+        <img src="imagenes de duolingo web/Animacion principal de duolingo.png" alt="Personajes de Duolingo aprendiendo desde un celular">
+      </div>
+    </div>
+    <div>
+      <h1>¡La forma más divertida de aprender idiomas, ajedrez y más!</h1>
+      <div class="hero-ctas">
+        <a href="https://www.duolingo.com/" class="btn btn-primary" id="heroCta">EMPIEZA AHORA</a>
+        <a href="https://www.duolingo.com/" class="btn btn-outline">YA TENGO UNA CUENTA</a>
+      </div>
+    </div>
+  </div>
+  <div class="lang-strip">
+    <button class="arrow" id="langStripPrev" aria-label="Ver cursos anteriores">‹</button>
+    <div class="lang-chip-row" id="langStripRow">
+      <a class="lang-chip" href="https://www.duolingo.com/courses"><img src="banderas duolingo/eeuu duo.png" alt="">INGLÉS</a>
+      <a class="lang-chip" href="https://www.duolingo.com/courses"><img src="banderas duolingo/ajedrez duo.png" alt="">AJEDREZ</a>
+      <a class="lang-chip" href="https://www.duolingo.com/courses"><img src="banderas duolingo/francia duo.png" alt="">FRANCÉS</a>
+      <a class="lang-chip" href="https://www.duolingo.com/courses"><img src="banderas duolingo/aleman duo.png" alt="">ALEMÁN</a>
+      <a class="lang-chip" href="https://www.duolingo.com/courses"><img src="banderas duolingo/italia duo.png" alt="">ITALIANO</a>
+      <a class="lang-chip" href="https://www.duolingo.com/courses"><img src="banderas duolingo/brasil duo.png" alt="">PORTUGUÉS</a>
+      <a class="lang-chip" href="https://www.duolingo.com/courses"><img src="banderas duolingo/japon duo.png" alt="">JAPONÉS</a>
+      <a class="lang-chip" href="https://www.duolingo.com/courses"><img src="banderas duolingo/china.png" alt="">CHINO</a>
+      <a class="lang-chip" href="https://www.duolingo.com/courses"><img src="banderas duolingo/corea del sur duo.png" alt="">COREANO</a>
+      <a class="lang-chip" href="https://www.duolingo.com/courses"><img src="banderas duolingo/rusia duo.png" alt="">RUSO</a>
+      <a class="lang-chip" href="https://www.duolingo.com/courses"><img src="banderas duolingo/suecia duo.png" alt="">SUECO</a>
+      <a class="lang-chip" href="https://www.duolingo.com/courses"><img src="banderas duolingo/catalan duo.png" alt="">CAT</a>
+    </div>
+    <button class="arrow" id="langStripNext" aria-label="Ver más cursos">›</button>
+  </div>
+</section>
+
+<section class="screen feature feature-1">
+  <div class="feature-inner">
+    <div class="txt reveal-l">
+      <h2>divertido, efectivo y gratis</h2>
+      <p>Aprender con Duolingo es divertido y <span class="feature-linkish">los estudios demuestran que funciona.</span> ¡En nuestras lecciones cortas ganarás puntos y habilitarás nuevas unidades al mismo tiempo que desarrollas tus habilidades de comunicación en la vida real!</p>
+    </div>
+    <div class="media">
+      <img class="reveal-scale" src="imagenes de duolingo web/personaje senalando numero 1.png" alt="">
+    </div>
+  </div>
+</section>
+
+<section class="screen feature feature-2">
+  <div class="feature-inner rev">
+    <div class="txt reveal-r">
+      <h2>respaldado por la ciencia</h2>
+      <p>Gracias a la combinación de métodos de enseñanza respaldados por la ciencia y un contenido entretenido, creamos cursos que enseñan de forma eficiente a leer, escribir, entender y hablar en otros idiomas.</p>
+    </div>
+    <div class="media">
+      <img class="reveal-rotate" src="imagenes de duolingo web/morada y rosa con telescopio.png" alt="">
+    </div>
+  </div>
+</section>
+
+<section class="screen feature feature-3">
+  <div class="feature-inner">
+    <div class="txt reveal-l">
+      <h2>mantén tu motivación</h2>
+      <p>Nuestras funcionalidades y desafíos son divertidos y hacen que aprender se sienta como un juego. ¡Vas a poder formar un hábito de aprendizaje sin esfuerzo! Y, por supuesto, recibirás recordatorios de nuestra adorable mascota, Duo, el búho.</p>
+    </div>
+    <div class="media">
+      <img class="reveal-scale" src="imagenes de duolingo web/rubio corriendo sobre rachas.png" alt="">
+    </div>
+  </div>
+</section>
+
+<section class="screen feature feature-4">
+  <div class="feature-inner rev">
+    <div class="txt reveal-r">
+      <h2>aprendizaje personalizado</h2>
+      <p>Al combinar lo mejor de la inteligencia artificial y las ciencias de idiomas, las lecciones se adaptan según tu desempeño para ayudarte a aprender al nivel adecuado y a tu propio ritmo.</p>
+    </div>
+    <div class="media">
+      <img class="reveal-rotate" src="imagenes de duolingo web/motoquera y allah.png" alt="">
+    </div>
+  </div>
+</section>
+
+<section class="screen anywhere">
+  <div class="anywhere-stage">
+    <div class="anywhere-inner reveal">
+      <h2>aprende cuando quieras y donde quieras</h2>
+      <div class="store-badges">
+        <a class="store-badge" href="https://itunes.apple.com/app/duolingo-learn-spanish-french/id570060128?mt=8" aria-label="Descárgalo en la App Store">
+          <svg class="glyph" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+          <span class="lbl"><small>Descárgalo en la</small><b>App store</b></span>
+        </a>
+        <a class="store-badge store-badge--play" href="https://play.google.com/store/apps/details?id=com.duolingo" aria-label="Disponible en Google Play">
+          <svg class="glyph play" viewBox="0 0 20 22" aria-hidden="true"><path fill="currentColor" d="M1.2 0.6 19.4 11 1.2 21.4Z"/><path fill="none" stroke="#fff" stroke-width="1.1" stroke-linecap="round" d="M1.6 1.1 12.6 11 1.6 20.9M12.6 11h6.4"/></svg>
+          <span class="lbl"><small>Disponible en</small><b>Google Play</b></span>
+        </a>
+      </div>
+    </div>
+    <div class="anywhere-scene reveal-scale" aria-hidden="true">
+      <div class="obj" style="left:7.190%;top:7.323%;width:4.261%;"><img class="drift a" style="--d:-0.0s" src="imagenes de duolingo web/floaters/anywhere_cube_green.png" alt=""></div>
+      <div class="obj" style="left:3.233%;top:9.414%;width:2.426%;"><img class="drift b" style="--d:-1.7s" src="imagenes de duolingo web/floaters/icon_02.png" alt=""></div>
+      <div class="obj" style="left:15.561%;top:10.319%;width:1.479%;"><img class="drift c" style="--d:-3.4s" src="imagenes de duolingo web/floaters/icon_03.png" alt=""></div>
+      <div class="obj" style="left:8.722%;top:19.066%;width:2.996%;"><img class="drift a" style="--d:-5.1s" src="imagenes de duolingo web/floaters/anywhere_tile_a.png" alt=""></div>
+      <div class="obj" style="left:28.096%;top:28.283%;width:3.262%;"><img class="drift b" style="--d:-6.8s" src="imagenes de duolingo web/floaters/anywhere_tile_blue.png" alt=""></div>
+      <div class="obj" style="left:47.242%;top:36.436%;width:4.184%;"><img class="drift c" style="--d:-8.5s" src="imagenes de duolingo web/floaters/icon_06.png" alt=""></div>
+      <div class="obj" style="left:42.410%;top:42.298%;width:3.129%;"><img class="drift a" style="--d:-1.2s" src="imagenes de duolingo web/floaters/anywhere_crystals.png" alt=""></div>
+      <div class="obj" style="left:48.520%;top:47.446%;width:1.634%;"><img class="drift b" style="--d:-2.9s" src="imagenes de duolingo web/floaters/icon_12.png" alt=""></div>
+      <div class="obj" style="left:52.700%;top:50.814%;width:5.027%;"><img class="drift c" style="--d:-4.6s" src="imagenes de duolingo web/floaters/icon_13.png" alt=""></div>
+      <div class="obj" style="left:67.879%;top:38.326%;width:6.468%;"><img class="drift a" style="--d:-6.3s" src="imagenes de duolingo web/floaters/icon_07.png" alt=""></div>
+      <div class="obj" style="left:94.975%;top:42.995%;width:5.250%;"><img class="drift b" style="--d:-8.0s" src="imagenes de duolingo web/floaters/icon_11.png" alt=""></div>
+      <div class="obj" style="left:14.819%;top:56.008%;width:3.589%;"><img class="drift c" style="--d:-0.7s" src="imagenes de duolingo web/floaters/icon_14.png" alt=""></div>
+      <div class="obj" style="left:21.342%;top:59.665%;width:6.103%;"><img class="drift a" style="--d:-2.4s" src="imagenes de duolingo web/floaters/icon_15.png" alt=""></div>
+      <div class="obj" style="left:10.556%;top:67.872%;width:6.818%;"><img class="drift b" style="--d:-4.1s" src="imagenes de duolingo web/floaters/icon_17.png" alt=""></div>
+      <div class="obj" style="left:23.469%;top:73.675%;width:7.240%;"><img class="drift c" style="--d:-5.8s" src="imagenes de duolingo web/floaters/icon_18.png" alt=""></div>
+      <div class="obj" style="left:77.667%;top:79.994%;width:6.925%;"><img class="drift a" style="--d:-7.5s" src="imagenes de duolingo web/floaters/icon_20.png" alt=""></div>
+      <div class="obj" style="left:97.508%;top:63.078%;width:2.356%;"><img class="drift b" style="--d:-0.2s" src="imagenes de duolingo web/floaters/icon_16.png" alt=""></div>
+      <div class="obj" style="left:83.456%;top:91.984%;width:4.538%;"><img class="drift c" style="--d:-1.9s" src="imagenes de duolingo web/floaters/icon_22.png" alt=""></div>
+      <div class="obj" style="left:77.409%;top:92.384%;width:2.187%;"><img class="drift a" style="--d:-3.6s" src="imagenes de duolingo web/floaters/icon_23.png" alt=""></div>
+      <div class="obj" style="left:0.000%;top:29.924%;width:11.119%;"><img class="drift b" style="--d:-5.3s" src="imagenes de duolingo web/floaters/phone_04_full.png" alt=""></div>
+      <div class="obj" style="left:20.506%;top:21.465%;width:9.454%;"><img class="drift c" style="--d:-7.0s" src="imagenes de duolingo web/floaters/phone_05_full.png" alt=""></div>
+      <div class="obj" style="left:32.224%;top:48.359%;width:14.314%;"><img class="drift a" style="--d:-8.7s" src="imagenes de duolingo web/floaters/phone_00_full.png" alt=""></div>
+      <div class="obj" style="left:61.585%;top:59.091%;width:11.252%;"><img class="drift b" style="--d:-1.4s" src="imagenes de duolingo web/floaters/phone_02.png" alt=""></div>
+      <div class="obj" style="left:82.091%;top:52.146%;width:13.582%;"><img class="drift c" style="--d:-3.1s" src="imagenes de duolingo web/floaters/phone_01.png" alt=""></div>
+      <div class="obj" style="left:42.876%;top:87.879%;width:20.040%;"><img class="drift a" style="--d:-4.8s" src="imagenes de duolingo web/floaters/phone_03.png" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen celeste">
+  <div class="celeste-scene" aria-hidden="true"></div>
+</section>
+
+<section class="screen super">
+  <div class="super-inner">
+    <div class="super-stage">
+      <div class="super-scene">
+        <svg class="super-blob" viewBox="140 298 260 214" preserveAspectRatio="none" aria-hidden="true"><path fill-rule="evenodd" d="M354.50,312.25 C351.50,308.21 347.75,306.29 345.25,304.75 C342.75,303.21 341.71,303.29 339.50,303.00 C337.29,302.71 334.75,302.42 332.00,303.00 C329.25,303.58 326.83,304.00 323.00,306.50 C319.17,309.00 312.00,315.79 309.00,318.00 C306.00,320.21 310.33,319.58 305.00,319.75 C299.67,319.92 283.42,318.46 277.00,319.00 C270.58,319.54 269.58,320.88 266.50,323.00 C263.42,325.12 260.42,328.71 258.50,331.75 C256.58,334.79 255.54,338.00 255.00,341.25 C254.46,344.50 254.29,346.67 255.25,351.25 C256.21,355.83 259.92,365.38 260.75,368.75 C261.58,372.12 265.29,367.83 260.25,371.50 C255.21,375.17 235.71,387.04 230.50,390.75 C225.29,394.46 229.25,392.08 229.00,393.75 C228.75,395.42 228.67,397.21 229.00,400.75 C229.33,404.29 231.12,410.88 231.00,415.00 C230.88,419.12 229.17,423.00 228.25,425.50 C227.33,428.00 226.96,428.25 225.50,430.00 C224.04,431.75 221.83,434.21 219.50,436.00 C217.17,437.79 214.75,439.42 211.50,440.75 C208.25,442.08 203.83,443.50 200.00,444.00 C196.17,444.50 192.62,444.71 188.50,443.75 C184.38,442.79 178.75,440.38 175.25,438.25 C171.75,436.12 169.79,433.96 167.50,431.00 C165.21,428.04 162.96,424.17 161.50,420.50 C160.04,416.83 159.21,411.96 158.75,409.00 C158.29,406.04 158.21,405.83 158.75,402.75 C159.29,399.67 160.54,394.00 162.00,390.50 C163.46,387.00 165.12,384.42 167.50,381.75 C169.88,379.08 172.92,376.46 176.25,374.50 C179.58,372.54 183.12,370.79 187.50,370.00 C191.88,369.21 199.17,369.42 202.50,369.75 C205.83,370.08 207.54,369.38 207.50,372.00 C207.46,374.62 203.04,382.50 202.25,385.50 C201.46,388.50 201.54,388.46 202.75,390.00 C203.96,391.54 206.83,393.42 209.50,394.75 C212.17,396.08 216.58,397.50 218.75,398.00 C220.92,398.50 221.25,398.58 222.50,397.75 C223.75,396.92 223.88,397.83 226.25,393.00 C228.62,388.17 235.12,373.58 236.75,368.75 C238.38,363.92 236.96,365.46 236.00,364.00 C235.04,362.54 234.04,361.33 231.00,360.00 C227.96,358.67 220.46,356.33 217.75,356.00 C215.04,355.67 216.12,356.08 214.75,358.00 C213.38,359.92 212.33,366.33 209.50,367.50 C206.67,368.67 202.29,365.42 197.75,365.00 C193.21,364.58 186.42,364.50 182.25,365.00 C178.08,365.50 175.88,366.62 172.75,368.00 C169.62,369.38 166.50,370.96 163.50,373.25 C160.50,375.54 157.29,378.38 154.75,381.75 C152.21,385.12 149.88,389.58 148.25,393.50 C146.62,397.42 145.62,401.38 145.00,405.25 C144.38,409.12 144.38,412.79 144.50,416.75 C144.62,420.71 144.92,424.83 145.75,429.00 C146.58,433.17 147.50,437.17 149.50,441.75 C151.50,446.33 154.38,451.79 157.75,456.50 C161.12,461.21 166.00,466.38 169.75,470.00 C173.50,473.62 176.42,475.62 180.25,478.25 C184.08,480.88 188.46,483.42 192.75,485.75 C197.04,488.08 200.79,490.04 206.00,492.25 C211.21,494.46 218.17,497.12 224.00,499.00 C229.83,500.88 235.79,502.38 241.00,503.50 C246.21,504.62 247.62,505.38 255.25,505.75 C262.88,506.12 278.25,506.25 286.75,505.75 C295.25,505.25 299.12,504.46 306.25,502.75 C313.38,501.04 321.92,498.75 329.50,495.50 C337.08,492.25 345.33,487.67 351.75,483.25 C358.17,478.83 363.50,473.88 368.00,469.00 C372.50,464.12 375.29,459.75 378.75,454.00 C382.21,448.25 386.08,441.83 388.75,434.50 C391.42,427.17 393.75,416.75 394.75,410.00 C395.75,403.25 395.21,398.62 394.75,394.00 C394.29,389.38 395.50,388.04 392.00,382.25 C388.50,376.46 377.42,365.29 373.75,359.25 C370.08,353.21 371.75,351.04 370.00,346.00 C368.25,340.96 365.83,334.62 363.25,329.00 C360.67,323.38 357.50,316.29 354.50,312.25 Z"/></svg>
+        <img class="super-owl reveal-scale" src="imagenes de duolingo web/floaters/super_owl.png" alt="Búho de Super Duolingo" style="left:36.154%;top:4.790%;width:59.154%;">
+        <img class="super-phone drift b" src="imagenes de duolingo web/floaters/super_phone.png" alt="" aria-hidden="true" style="left:23.173%;top:26.519%;width:14.923%;">
+        <img class="super-pills drift c" src="imagenes de duolingo web/floaters/super_pills.png" alt="" aria-hidden="true" style="left:47.404%;top:63.668%;width:11.731%;">
+      </div>
+      <div class="super-text">
+        <h2 class="sr-only">Super Duolingo</h2>
+        <p class="super-caption reveal">POWER UP WITH</p>
+        <img class="super-word reveal-bounce reveal-delay-1" src="imagenes de duolingo web/SUPER DUOLINGO.png" alt="Super Duolingo">
+        <div class="reveal reveal-delay-2"><a href="https://www.duolingo.com/super" class="btn">PROBAR 1 SEMANA GRATIS</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="screen english-test feature">
+  <div class="feature-inner">
+    <div class="txt reveal-l">
+      <h2>duolingo english test</h2>
+      <p>Nuestro examen de inglés es conveniente, rápido y económico. El Duolingo English Test integra los últimos avances en la ciencia e inteligencia artificial para dar a todas las personas la posibilidad de elegir dónde y cuándo hacer el examen y que puedan dar lo mejor de sí.</p>
+      <a href="https://englishtest.duolingo.com/" class="btn btn-outline">CERTIFICA TU INGLÉS</a>
+    </div>
+    <div class="media">
+      <img class="reveal-rotate" src="imagenes de duolingo web/duolingo morena teniendo el check verde.png" alt="">
+    </div>
+  </div>
+</section>
+
+<section class="screen final-comp">
+  <div class="final-stage">
+    <div class="final-comp-inner reveal">
+      <h2>aprende idiomas con duolingo</h2>
+      <div class="reveal-bounce"><a href="https://www.duolingo.com/" class="btn btn-primary btn-lg">EMPIEZA AHORA</a></div>
+    </div>
+    <div class="final-scene reveal-scale" aria-hidden="true">
+      <svg class="final-wave" viewBox="0 250 1073 639" preserveAspectRatio="none">
+        <defs>
+          <path id="finalWavePath" d="M-1400,434.0 L0,434.0 L6,436.2 L12,439.4 L18,443.0 L24,447.2 L30,451.8 L36,456.5 L42,462.6 L48,469.0 L54,475.9 L60,483.0 L66,490.7 L72,498.8 L78,507.0 L84,515.1 L90,523.3 L96,531.0 L102,538.5 L108,545.0 L114,550.2 L120,554.5 L126,558.0 L132,562.2 L138,565.8 L144,569.2 L150,572.2 L156,575.2 L162,577.2 L168,579.2 L174,580.8 L180,582.0 L186,583.6 L192,584.0 L198,584.2 L204,585.0 L210,586.0 L216,586.0 L222,586.0 L228,586.8 L234,587.8 L240,588.0 L246,588.6 L252,590.0 L258,591.2 L264,592.2 L270,593.8 L276,595.8 L282,598.0 L288,599.8 L294,602.2 L300,604.6 L306,607.4 L312,610.6 L318,614.6 L324,619.2 L330,623.8 L336,629.6 L342,635.6 L348,642.2 L354,649.6 L360,656.2 L366,663.6 L372,670.0 L378,676.4 L384,682.0 L390,687.6 L396,692.4 L402,696.6 L408,700.6 L414,704.4 L420,707.0 L426,710.4 L432,712.8 L438,714.8 L444,716.8 L450,718.8 L456,720.6 L462,722.0 L468,723.6 L474,724.6 L480,726.0 L486,726.2 L492,728.0 L498,728.0 L504,729.2 L510,730.0 L516,730.0 L522,730.0 L528,730.0 L534,730.2 L540,731.0 L546,731.0 L552,731.0 L558,731.0 L564,731.0 L570,730.2 L576,730.0 L582,730.0 L588,730.0 L594,730.0 L600,729.0 L606,728.2 L612,728.0 L618,726.2 L624,726.0 L630,724.8 L636,724.0 L642,722.0 L648,721.0 L654,719.6 L660,717.6 L666,715.0 L672,712.8 L678,710.4 L684,707.4 L690,704.6 L696,701.0 L702,697.2 L708,693.0 L714,688.6 L720,683.0 L726,677.4 L732,671.2 L738,664.6 L744,658.0 L750,650.6 L756,644.0 L762,636.8 L768,630.4 L774,624.8 L780,620.2 L786,615.2 L792,611.6 L798,608.0 L804,605.6 L810,602.6 L816,600.4 L822,598.4 L828,596.0 L834,594.0 L840,592.4 L846,591.2 L852,590.0 L858,588.8 L864,588.0 L870,587.8 L876,587.0 L882,586.0 L888,586.0 L894,586.0 L900,585.0 L906,584.4 L912,584.0 L918,583.8 L924,582.0 L930,582.0 L936,581.4 L942,578.0 L948,575.6 L954,573.0 L960,569.8 L966,566.5 L972,562.9 L978,559.0 L984,554.7 L990,550.1 L996,545.1 L1002,539.4 L1008,533.1 L1014,526.1 L1020,518.6 L1026,510.8 L1032,502.8 L1038,494.8 L1044,486.9 L1050,479.1 L1056,471.0 L1062,463.7 L1068,457.0 L1072,452.0 L2500,452.0 L2500,889 L-1400,889 Z"/>
+          <clipPath id="finalWaveClip"><use href="#finalWavePath"/></clipPath>
+        </defs>
+        <use href="#finalWavePath" class="wave-fill"/>
+        <g clip-path="url(#finalWaveClip)" class="wave-shadows">
+          <ellipse cx="80" cy="565" rx="31" ry="11" transform="rotate(20 80 565)"/>
+          <ellipse cx="990" cy="562.5" rx="57" ry="18.5"/>
+        </g>
+      </svg>
+      <div class="obj" style="left:0.373%;top:6.886%;width:16.589%;"><img class="drift a" style="--d:-1s" src="imagenes de duolingo web/floaters/final_chest.png" alt=""></div>
+      <div class="obj" style="left:4.753%;top:36.307%;width:6.617%;"><img class="drift b" style="--d:-3s" src="imagenes de duolingo web/floaters/final_hex_c.png" alt=""></div>
+      <div class="obj" style="left:12.954%;top:28.638%;width:5.592%;"><img class="drift c" style="--d:-5s" src="imagenes de duolingo web/floaters/final_hex_a.png" alt=""></div>
+      <div class="obj" style="left:21.808%;top:1.565%;width:7.829%;"><img class="drift b" style="--d:-2s" src="imagenes de duolingo web/floaters/final_sq_a.png" alt=""></div>
+      <div class="obj" style="left:17.894%;top:10.172%;width:10.904%;"><img class="drift c" style="--d:-4s" src="imagenes de duolingo web/floaters/final_coin_c.png" alt=""></div>
+      <div class="obj" style="left:31.966%;top:4.069%;width:7.829%;"><img class="drift a" style="--d:-6s" src="imagenes de duolingo web/floaters/final_coin_d.png" alt=""></div>
+      <div class="obj" style="left:24.604%;top:19.718%;width:13.793%;"><img class="drift b" style="--d:-1.5s" src="imagenes de duolingo web/floaters/final_heart.png" alt=""></div>
+      <div class="obj" style="left:23.579%;top:42.723%;width:3.541%;"><img class="drift c" style="--d:-7s" src="imagenes de duolingo web/floaters/final_sq_b.png" alt=""></div>
+      <div class="obj" style="left:39.422%;top:9.390%;width:24.511%;"><img class="drift a" style="--d:-2.5s" src="imagenes de duolingo web/floaters/final_phone.png" alt=""></div>
+      <div class="obj" style="left:71.295%;top:3.130%;width:8.947%;"><img class="drift b" style="--d:-3.5s" src="imagenes de duolingo web/floaters/final_clock.png" alt=""></div>
+      <div class="obj" style="left:63.001%;top:26.917%;width:16.962%;"><img class="drift c" style="--d:-5.5s" src="imagenes de duolingo web/floaters/final_coin_a.png" alt=""></div>
+      <div class="obj" style="left:87.046%;top:1.565%;width:8.481%;"><img class="drift a" style="--d:-4.5s" src="imagenes de duolingo web/floaters/final_gem_a.png" alt=""></div>
+      <div class="obj" style="left:89.282%;top:19.875%;width:4.380%;"><img class="drift b" style="--d:-6.5s" src="imagenes de duolingo web/floaters/final_hex_b.png" alt=""></div>
+      <svg class="final-platform" viewBox="0 250 1073 639" preserveAspectRatio="none">
+        <g class="drift b" style="--d:-3s">
+          <g transform="rotate(-5 962 502)">
+            <rect class="plat-side" x="866" y="502" width="192" height="15"/>
+            <ellipse class="plat-side" cx="962" cy="517" rx="96" ry="26"/>
+            <ellipse class="plat-top" cx="962" cy="502" rx="96" ry="26"/>
+            <path class="plat-check" d="M931 499.5 958 508 1001 488.5"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+</main>
+
+
+<footer>
+  <div class="footer-grid reveal">
+    <div class="footer-col">
+      <h3>Sobre nosotros</h3>
+      <a href="https://www.duolingo.com/courses">Cursos</a>
+      <a href="https://www.duolingo.com/info">Misión</a>
+      <a href="https://www.duolingo.com/approach">Método de enseñanza</a>
+      <a href="https://www.duolingo.com/efficacy">Eficacia</a>
+      <a href="https://www.duolingo.com/">Manual de Duolingo</a>
+      <a href="https://research.duolingo.com/">Investigación</a>
+      <a href="https://careers.duolingo.com/">Empleo</a>
+      <a href="https://store.duolingo.com/">Tienda</a>
+      <a href="https://press.duolingo.com/">Prensa</a>
+      <a href="https://investors.duolingo.com/">Inversionistas</a>
+      <a href="https://www.duolingo.com/contact">Contáctanos</a>
+    </div>
+    <div class="footer-col">
+      <h3>Productos</h3>
+      <a href="https://www.duolingo.com/">Duolingo</a>
+      <a href="https://schools.duolingo.com/">Duolingo for Schools</a>
+      <a href="https://englishtest.duolingo.com/">Duolingo English Test</a>
+      <a href="https://podcast.duolingo.com/">Podcast</a>
+      <a href="https://www.duolingo.com/business">Duolingo for Business</a>
+      <a href="https://www.duolingo.com/super">Súper Duolingo</a>
+      <a href="https://www.duolingo.com/super">Regala Súper Duolingo</a>
+      <a href="https://www.duolingo.com/super">Duolingo Max</a>
+    </div>
+    <div class="footer-col">
+      <h3>Aplicaciones</h3>
+      <a href="https://play.google.com/store/apps/details?id=com.duolingo">Duolingo para Android</a>
+      <a href="https://itunes.apple.com/app/duolingo-learn-spanish-french/id570060128?mt=8">Duolingo para iOS</a>
+    </div>
+    <div class="footer-col">
+      <h3>Ayuda y soporte</h3>
+      <a href="https://www.duolingo.com/help">App de Duolingo</a>
+      <a href="https://schools.duolingo.com/">Schools</a>
+      <a href="https://englishtest.duolingo.com/faq">Duolingo English Test</a>
+      <a href="https://status.duolingo.com/">Estado</a>
+    </div>
+    <div class="footer-col">
+      <h3>Términos y privacidad</h3>
+      <a href="https://www.duolingo.com/guidelines">Normas de la comunidad</a>
+      <a href="https://www.duolingo.com/terms">Términos</a>
+      <a href="https://www.duolingo.com/privacy">Privacidad</a>
+      <h3 style="margin-top:20px;">Social</h3>
+      <a href="https://blog.duolingo.com/">Blog</a>
+      <a href="https://www.instagram.com/duolingo">Instagram</a>
+      <a href="https://www.tiktok.com/@duolingo">TikTok</a>
+      <a href="https://x.com/duolingo">Twitter</a>
+      <a href="https://www.youtube.com/user/duolingo">YouTube</a>
+      <a href="https://www.linkedin.com/company/duolingo/">LinkedIn</a>
+    </div>
+  </div>
+  <div class="footer-langs">
+    <p>Idioma de la página:</p>
+    <div class="list">
+      <a href="https://www.duolingo.com/">العربية</a><a href="https://www.duolingo.com/">বাংলা</a><a href="https://www.duolingo.com/">Čeština</a><a href="https://www.duolingo.com/">Deutsch</a><a href="https://www.duolingo.com/">Ελληνικά</a><a href="https://www.duolingo.com/">English</a><a href="https://www.duolingo.com/">Español</a><a href="https://www.duolingo.com/">Français</a><a href="https://www.duolingo.com/">हिन्दी</a><a href="https://www.duolingo.com/">Magyar</a><a href="https://www.duolingo.com/">Bahasa Indonesia</a><a href="https://www.duolingo.com/">Italiano</a><a href="https://www.duolingo.com/">日本語</a><a href="https://www.duolingo.com/">ಕನ್ನಡ</a>
+      <a href="https://www.duolingo.com/">한국어</a><a href="https://www.duolingo.com/">मराठी</a><a href="https://www.duolingo.com/">Nederlands</a><a href="https://www.duolingo.com/">ਪੰਜਾਬੀ</a><a href="https://www.duolingo.com/">Polski</a><a href="https://www.duolingo.com/">Português</a><a href="https://www.duolingo.com/">Română</a><a href="https://www.duolingo.com/">Русский</a><a href="https://www.duolingo.com/">svenska</a><a href="https://www.duolingo.com/">தமிழ்</a><a href="https://www.duolingo.com/">తెలుగు</a><a href="https://www.duolingo.com/">ภาษาไทย</a><a href="https://www.duolingo.com/">Tagalog</a><a href="https://www.duolingo.com/">Türkçe</a>
+      <a href="https://www.duolingo.com/">Українською</a><a href="https://www.duolingo.com/">اردو</a><a href="https://www.duolingo.com/">Tiếng Việt</a><a href="https://www.duolingo.com/">中文</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
