@@ -1,8 +1,4 @@
-/* =====================================================================
-   TOKENS — paleta base (colores oficiales documentados de Duolingo)
-   ===================================================================== */
 :root{
-  /* -- paleta cruda -- */
   --c-feather:#58CC02;
   --c-feather-dark:#4AAD00;
   --c-macaw:#1CB0F6;
@@ -11,49 +7,29 @@
   --c-hare:#AFAFAF;
   --c-swan:#E5E5E5;
   --c-polar:#F7F7F7;
-  /* super duolingo: azul marino casi negro (medido de la referencia real, NO azul brillante) */
   --c-super-navy:#100F3E;
-  /* azul marino del título de "aprende cuando quieras..." (muestreado de cuarta imagen duo.png) */
   --c-anywhere-title:#03244F;
-
-  /* -- tokens semánticos: lo que se usa en componentes -- */
   --primary:var(--c-feather);
   --primary-hover:var(--c-feather-dark);
   --primary-pressed:#3D9200;
   --primary-shadow:var(--c-feather-dark);
   --secondary:var(--c-macaw);
-
   --text:var(--c-eel);
   --text-muted:var(--c-wolf);
   --text-faint:var(--c-hare);
   --border:var(--c-swan);
   --bg-subtle:var(--c-polar);
-
-  /* celeste del fondo: es --color-iguana-always-light del sitio original (221,244,255) */
   --celeste:#DDF4FF;
-
   --super-bg:var(--c-super-navy);
   --footer-bg:var(--c-feather);
-
-  /* -- tipografía --
-     Baloo 2 es demasiado "infantil" comparado a la referencia real:
-     usamos Nunito ExtraBold como aproximación fiel para headings también. */
   --font-display:'Nunito',-apple-system,BlinkMacSystemFont,sans-serif;
   --font-body:'Nunito',-apple-system,BlinkMacSystemFont,sans-serif;
-
-  /* -- spacing scale (4px base, no todos los saltos son iguales a propósito) -- */
   --sp-2:8px;  --sp-3:12px; --sp-4:16px;
   --sp-5:24px; --sp-6:32px; --sp-7:48px; --sp-8:64px;
   --sp-9:80px; --sp-11:120px;
-
-  /* -- radius scale -- */
   --r-sm:8px; --r-lg:16px;
-
-  /* -- depth (sombras "físicas" tipo botón + elevación de tarjetas/paneles) -- */
   --depth-btn-md:0 4px 0;
   --depth-panel:0 8px 24px rgba(0,0,0,.12);
-
-  /* -- motion: duraciones por categoría (ver punto 19 del brief) -- */
   --ease-standard:cubic-bezier(.2,.7,.3,1);
   --ease-out-soft:cubic-bezier(.16,1,.3,1);
   --ease-bounce:cubic-bezier(.34,1.56,.64,1);
@@ -62,12 +38,10 @@
   --t-entrance:650ms;
   --t-ambient:6s;
   --t-celebration:900ms;
-
   --header-h:62px;
   --gutter:32px;
 }
 *{box-sizing:border-box;}
-/* oculto visualmente pero disponible para lectores de pantalla y navegación por encabezados */
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
 html{scroll-behavior:smooth;}
 body{margin:0;font-family:var(--font-body);color:var(--text);background:#fff;}
@@ -86,17 +60,12 @@ h1,h2,h3{font-family:var(--font-display);}
 .btn-outline:active{transform:translateY(4px);box-shadow:0 0 0 var(--border);}
 .btn:disabled,.btn[aria-disabled="true"]{opacity:.5;cursor:not-allowed;transform:none !important;filter:grayscale(.3);}
 .super .btn{box-shadow:0 4px 0 rgba(0,0,0,.25);}
-/* ---- top bar ---- */
-/* la referencia (pantalla 1 duo.png) no muestra línea divisoria en estado inicial;
-   el borde/sombra aparece recién al scrollear */
 .topbar{position:sticky;top:0;z-index:100;background:#fff;height:var(--header-h);display:flex;align-items:center;
   border-bottom:1px solid transparent;transition:box-shadow var(--t-interaction) var(--ease-standard), border-color var(--t-interaction) ease;}
 .topbar.is-scrolled{box-shadow:0 2px 10px rgba(0,0,0,.06);border-bottom-color:var(--border);}
 .topbar-inner{max-width:1150px;margin:0 auto;padding:0 32px;width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;}
 .logo{display:flex;align-items:center;flex-shrink:0;}
 .logo img{height:45px;width:auto;}
-/* el CTA y el selector de idioma ocupan la MISMA celda: es una transformación
-   del mismo elemento de navegación, no dos navbars distintas */
 .topbar-right-group{position:relative;height:100%;min-width:250px;display:flex;justify-content:flex-end;}
 .nav-cta{position:absolute;right:0;top:50%;
   transform:translateY(-50%) scale(.85);opacity:0;pointer-events:none;padding:10px 22px;font-size:.85rem;
@@ -125,7 +94,6 @@ h1,h2,h3{font-family:var(--font-display);}
 .lang-dropdown-panel a:focus-visible{background:var(--bg-subtle);color:var(--secondary);outline:none;}
 .lang-dropdown-panel a.is-selected{color:var(--primary);}
 .lang-dropdown-panel a.is-selected::after{content:"✓";font-size:.8rem;}
-/* el click/tap es el único mecanismo para abrir: no hay :hover que dispare el panel */
 .lang-dropdown.open .lang-dropdown-panel{opacity:1;visibility:visible;transform:translateY(0) scale(1);}
 .lang-dropdown.open .chev{transform:rotate(180deg);}
 @media (max-width:640px){
@@ -134,7 +102,6 @@ h1,h2,h3{font-family:var(--font-display);}
   .lang-dropdown-panel{min-width:170px;}
   .logo img{height:34px;}
 }
-/* ---- fila de idiomas (usada en la franja debajo del hero y en selector de cursos) ---- */
 .lang-chip-row{display:flex;align-items:center;gap:16px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;scroll-behavior:smooth;min-width:0;}
 .lang-chip-row::-webkit-scrollbar{display:none;}
 .lang-chip{display:flex;align-items:center;gap:6px;font-size:.78rem;font-weight:800;color:var(--text);white-space:nowrap;position:relative;flex-shrink:0;scroll-snap-align:start;padding:2px 0;transition:opacity var(--t-micro) ease;}
@@ -145,18 +112,11 @@ h1,h2,h3{font-family:var(--font-display);}
 .arrow:hover{color:var(--text-muted);}
 .arrow:disabled{opacity:.35;cursor:default;pointer-events:none;}
 .arrow:focus-visible{outline:2px solid var(--secondary);}
-/* ---- hero: primer pantallazo, mucho aire arriba/abajo, contenido centrado ---- */
-/* grid de 2 filas: el contenido principal es flexible (1fr) y se centra en el
-   espacio disponible; el selector de cursos queda anclado al piso del primer
-   viewport, tal como en la referencia (no es un bloque flotante con margin-top) */
 .hero{min-height:calc(100vh - var(--header-h));padding:var(--sp-8) var(--gutter) 0;position:relative;overflow:hidden;
   display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:1fr auto;}
 .hero-inner{max-width:1150px;margin:0 auto;display:grid;grid-template-columns:1fr .92fr;gap:var(--sp-7);align-items:center;width:100%;position:relative;align-self:center;}
 .hero-media{position:relative;max-width:465px;width:100%;justify-self:end;margin-right:7px;top:-31px;}
 .hero-media img{max-width:100%;width:100%;display:block;}
-/* .hero-media conserva la posición base (ya auditada); .hero-float es un wrapper
-   interno que solo recibe la animación, así el transform del motion nunca pisa
-   el posicionamiento del contenedor exterior */
 .hero-float{animation:heroFloat 7.4s ease-in-out infinite;}
 @keyframes heroFloat{0%,100%{transform:translate3d(0,0,0) rotate(0deg);} 50%{transform:translate3d(0,-11px,0) rotate(-1deg);}}
 .hero h1{font-size:2rem;font-weight:800;line-height:1.28;color:var(--text);margin:0 0 var(--sp-5);letter-spacing:-.2px;max-width:460px;}
@@ -166,34 +126,23 @@ h1,h2,h3{font-family:var(--font-display);}
 .lang-strip .lang-chip-row{gap:30px;}
 .lang-strip .lang-chip{font-size:.8rem;color:var(--text-muted);}
 .lang-strip .lang-chip img{width:32px;height:24px;}
-/* =====================================================================
-   SISTEMA DE MOTION — categorías distintas, no un solo fade+translateY
-   ===================================================================== */
-/* ENTRADA: slide direccional */
 .reveal-l{opacity:0;transform:translateX(-38px);transition:opacity var(--t-entrance) var(--ease-out-soft), transform var(--t-entrance) var(--ease-out-soft);}
 .reveal-l.in{opacity:1;transform:translateX(0);}
 .reveal-r{opacity:0;transform:translateX(38px);transition:opacity var(--t-entrance) var(--ease-out-soft), transform var(--t-entrance) var(--ease-out-soft);}
 .reveal-r.in{opacity:1;transform:translateX(0);}
-/* ENTRADA: fade simple (para párrafos, texto secundario) */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity var(--t-entrance) ease, transform var(--t-entrance) var(--ease-standard);}
 .reveal.in{opacity:1;transform:translateY(0);}
-/* ENTRADA: scale suave (para ilustraciones centrales) */
 .reveal-scale{opacity:0;transform:scale(.88);transition:opacity var(--t-entrance) var(--ease-out-soft), transform var(--t-entrance) var(--ease-out-soft);}
 .reveal-scale.in{opacity:1;transform:scale(1);}
-/* ENTRADA: rotate-in sutil (para elementos "juguetones") */
 .reveal-rotate{opacity:0;transform:rotate(-8deg) scale(.9) translateY(24px);transition:opacity var(--t-entrance) var(--ease-bounce), transform var(--t-entrance) var(--ease-bounce);}
 .reveal-rotate.in{opacity:1;transform:rotate(0deg) scale(1) translateY(0);}
-/* ENTRADA: bounce sutil (para CTAs / momentos de énfasis) */
 .reveal-bounce{opacity:0;transform:translateY(26px) scale(.92);transition:opacity var(--t-celebration) var(--ease-bounce), transform var(--t-celebration) var(--ease-bounce);}
 .reveal-bounce.in{opacity:1;transform:translateY(0) scale(1);}
 .reveal-delay-1.in{transition-delay:.12s;}
 .reveal-delay-2.in{transition-delay:.24s;}
-/* AMBIENTAL: movimiento lento y continuo para elementos decorativos (independiente de la entrada) */
 @keyframes driftA{0%,100%{transform:translate3d(0,0,0) rotate(0deg);} 50%{transform:translate3d(0,-5px,0) rotate(-1.5deg);}}
 @keyframes driftB{0%,100%{transform:translate3d(0,0,0) rotate(0deg);} 50%{transform:translate3d(0,4px,0) rotate(1.5deg);}}
 @keyframes driftSpin{0%,100%{transform:translate3d(0,0,0) rotate(0deg);} 50%{transform:translate3d(0,-3px,0) rotate(2.5deg);}}
-/* .obj = wrapper de posición (left/top/width en %) ; .drift = imagen interna que lleva SOLO el movimiento ambiental
-   (posición y animación en elementos distintos: el transform de la animación nunca pisa el de posición) */
 .obj{position:absolute;pointer-events:none;}
 .obj>img,.drift{display:block;width:100%;height:auto;}
 .drift.a{animation:driftA calc(var(--t-ambient) * 1.5) ease-in-out infinite;}
@@ -201,15 +150,8 @@ h1,h2,h3{font-family:var(--font-display);}
 .drift.c{animation:driftSpin calc(var(--t-ambient) * 1.3) ease-in-out infinite;}
 .drift.a,.drift.b,.drift.c{animation-delay:var(--d,0s);}
 .final-platform .drift{transform-box:fill-box;transform-origin:center;}
-/* ---- fondo celeste (igual que el sitio original) ----
-   .bg-scroll envuelve features + "aprende cuando quieras". .bg-celeste es una capa detrás de todo eso,
-   color #DDF4FF, que va de opacity 0 a 1 según el scroll (script.js: updateCeleste). Por eso las secciones
-   de adentro NO pintan fondo propio: si lo hicieran taparían la capa y el celeste nunca se vería. */
 .bg-scroll{position:relative;isolation:isolate;}
 .bg-celeste{position:absolute;inset:0;z-index:-1;background:var(--celeste);opacity:0;will-change:opacity;transition:opacity .2s ease-out;pointer-events:none;}
-/* ---- features + duolingo english test: misma estructura que el sitio original ----
-   >=1080px: fila de 988px (texto 503 + gap 101 + ilustración 530), .rev invierte el orden;
-   768-1079: columna, ilustración de 452px; <768: columna, ilustración hasta 345px, títulos de 36px. */
 .features{display:flex;flex-direction:column;gap:96px;padding:96px 0;overflow:hidden;}
 .feature-inner{display:flex;flex-direction:column;align-items:center;gap:32px;max-width:100%;padding:0 15px;}
 .feature .txt{display:flex;flex-direction:column;align-items:center;gap:24px;max-width:100%;text-align:center;}
@@ -218,7 +160,6 @@ h1,h2,h3{font-family:var(--font-display);}
 .feature-linkish{color:var(--secondary);font-weight:800;}
 .feature .media{display:grid;place-items:center;width:100%;max-width:345px;aspect-ratio:1;}
 .feature .media img{width:var(--fit,100%);height:auto;}
-/* cada ilustración es un recorte de distinto tamaño: --fit la ajusta al cuadro de la ilustración original */
 .feature-1{--fit:91%;} .feature-2{--fit:75%;} .feature-3{--fit:83%;} .feature-4{--fit:74%;} .english-test{--fit:83%;}
 @media (min-width:768px){
   .feature-inner{padding:0;}
@@ -233,28 +174,16 @@ h1,h2,h3{font-family:var(--font-display);}
   .feature .txt{align-items:flex-start;text-align:left;flex:none;}
   .feature .media{width:530px;flex:none;}
 }
-/* ---- "aprende cuando quieras y donde quieras": reconstruida en HTML real ----
-   Marco de referencia = cuarta imagen duo.png (1502x760) + 20u de aire arriba y 12u abajo = 1502x792.
-   --u = 1 unidad de ese marco (100cqw/1502): título, badges y los 25 objetos escalan JUNTOS con el ANCHO
-   del viewport (sin tope de 1502px y sin padding lateral: la composición ocupa todo el ancho, con el
-   teléfono izquierdo y el hexágono derecho pegados a los extremos como en la referencia).
-   Las posiciones (left/top/width en % del marco) salen de medir cada objeto en la referencia:
-   x e y a escala 1:1 — antes la Y estaba estirada ~1.16x respecto de la X. */
 .anywhere{
   position:relative;overflow:hidden;padding:var(--sp-9) 0 var(--sp-6);
 }
 .anywhere-stage{position:relative;width:100%;max-width:2400px;margin:0 auto;aspect-ratio:1502/792;container-type:inline-size;--u:calc(100cqw / 1502);}
-/* bloque título+badges: centrado en x=811u (centro medido en la referencia), tope de la 1.ª línea en y≈1u del recorte */
 .anywhere-inner{position:absolute;left:calc(561 * var(--u));width:calc(500 * var(--u));top:calc(10.4 * var(--u));text-align:center;z-index:2;}
 .anywhere h2{
   color:var(--c-anywhere-title);font-size:calc(51.5 * var(--u));font-weight:800;line-height:calc(62 * var(--u));
   margin:0 auto calc(33.6 * var(--u));letter-spacing:-.3px;max-width:calc(420 * var(--u));
 }
-/* badges: se escalan con --ub = max(--u, .8px): igual a la referencia en desktop y sin achicarse por debajo
-   del 80% de su tamaño en tablet (evita botones diminutos; a <=900px pasan al layout móvil) */
 .store-badges{display:flex;gap:calc(17 * var(--ub));justify-content:center;--ub:max(calc(100cqw / 1502), .8px);}
-/* badge de referencia (medido): 135x48u / 125x48u, blanco, borde/sombra casi imperceptibles, glifo y texto gris oscuro;
-   glifo a x=16u, texto a x=47u, margen derecho 14u */
 .store-badge{display:flex;align-items:center;gap:calc(11 * var(--ub));background:#fff;border:1px solid rgba(0,0,0,.05);border-radius:calc(13 * var(--ub));
   width:calc(135 * var(--ub));height:calc(48 * var(--ub));padding:0 calc(12 * var(--ub)) 0 calc(16 * var(--ub));box-shadow:0 1px 3px rgba(0,0,0,.04);
   transition:box-shadow var(--t-micro) ease, border-color var(--t-micro) ease;}
@@ -265,13 +194,9 @@ h1,h2,h3{font-family:var(--font-display);}
 .store-badge .lbl{text-align:left;line-height:1.2;white-space:nowrap;}
 .store-badge .lbl small{display:block;font-size:calc(8.6 * var(--ub));color:var(--text);font-weight:800;}
 .store-badge .lbl b{display:block;font-size:calc(12 * var(--ub));color:var(--text);font-weight:800;}
-/* la escena ES el marco completo: los objetos se ubican en % del marco 1502x792 */
 .anywhere-scene{position:absolute;inset:0;z-index:1;}
 .anywhere-scene .obj img{filter:none;}
 @media (max-width:900px){
-  /* móvil/tablet: título y badges pasan al flujo normal; la escena mantiene la MISMA composición pero se
-     muestra al 120% del ancho, centrada y recortada por los lados (teléfonos más grandes y legibles,
-     sin scroll horizontal: .anywhere-stage recorta) */
   .anywhere{padding:var(--sp-8) 0 var(--sp-5);}
   .anywhere-stage{aspect-ratio:auto;container-type:normal;overflow:hidden;}
   .anywhere-inner{position:static;width:auto;padding:0 20px;}
@@ -283,9 +208,6 @@ h1,h2,h3{font-family:var(--font-display);}
   .store-badge .lbl b{font-size:.85rem;}
   .anywhere-scene{position:relative;inset:auto;width:120%;margin:var(--sp-5) 0 0 -10%;aspect-ratio:1502/792;}
 }
-/* ---- super duolingo: composición reconstruida (marco de referencia: quinta imagen duo.png) ----
-   --u = 1 unidad de ese marco. La escena (blob+búho+teléfono+píldoras, 260x214) y el bloque de texto (303 de ancho)
-   ocupan ~61% del ancho, ligeramente a la izquierda del centro, y el texto va CENTRADO sobre su propio eje. */
 .super{background:var(--super-bg);color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:var(--sp-9) var(--gutter);position:relative;overflow:hidden;min-height:88vh;}
 .super-inner{position:relative;left:-4.5vw;width:min(61vw,980px);margin:0 auto;container-type:inline-size;--u:calc(100cqw / 585);}
 .super-stage{display:flex;align-items:center;gap:calc(22 * var(--u));}
@@ -299,9 +221,6 @@ h1,h2,h3{font-family:var(--font-display);}
 .super-text .btn{margin-top:calc(14 * var(--u));min-width:calc(108 * var(--u));height:calc(23 * var(--u));padding:0 calc(9 * var(--u));white-space:nowrap;border-radius:calc(6 * var(--u));display:flex;align-items:center;justify-content:center;
   font-size:max(10px,calc(7.8 * var(--u)));letter-spacing:.1px;background:#fff;color:var(--super-bg);box-shadow:0 calc(3 * var(--u)) 0 rgba(0,0,0,.25);}
 .super .btn:active{transform:translateY(3px);box-shadow:0 0 0 rgba(0,0,0,.25);}
-/* ---- composición final antes del footer: escena reconstruida, no una screenshot ----
-   Marco de referencia = fondo duolingo celular aparece duo en chiquito.png (1073x889). --u = 1 unidad de ese marco.
-   La onda verde se extiende a todo el ancho de la pantalla (svg con overflow visible); los objetos ocupan ~79% del ancho. */
 .final-comp{padding:var(--sp-9) var(--gutter) 0;position:relative;overflow:hidden;}
 .final-stage{position:relative;width:min(79vw,1200px);margin:0 auto;container-type:inline-size;--u:calc(100cqw / 1073);}
 .final-comp-inner{text-align:center;position:relative;z-index:3;}
@@ -318,11 +237,9 @@ h1,h2,h3{font-family:var(--font-display);}
 .final-platform .plat-side{fill:#01AC82;}
 .final-platform .plat-check{fill:none;stroke:#fff;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;}
 .final-scene .obj{z-index:1;}
-/* ---- footer ---- */
 footer{background:var(--footer-bg);color:#fff;padding:var(--sp-8) 32px var(--sp-5);}
 .footer-grid{max-width:1150px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:var(--sp-4);padding-bottom:var(--sp-6);}
 .footer-col h3{font-family:var(--font-display);font-size:.9rem;font-weight:800;margin:0 0 var(--sp-3);letter-spacing:.2px;}
-/* hover sutil, sin subrayado — la referencia no muestra decoraciones marcadas */
 .footer-col a{display:block;font-size:.83rem;margin-bottom:var(--sp-2);font-weight:600;opacity:.9;color:#fff;transition:opacity var(--t-micro) ease;}
 .footer-col a:hover,.footer-col a:focus-visible{opacity:1;}
 .footer-col a:focus-visible{outline:2px solid #fff;outline-offset:3px;}
@@ -332,12 +249,6 @@ footer{background:var(--footer-bg);color:#fff;padding:var(--sp-8) 32px var(--sp-
 .footer-langs .list a{color:#fff;opacity:.85;transition:opacity var(--t-micro) ease;}
 .footer-langs .list a:hover,.footer-langs .list a:focus-visible{opacity:1;}
 .footer-langs .list a:focus-visible{outline:2px solid #fff;outline-offset:2px;}
-/* ---- efectos: revelado al hacer scroll — ver sistema de motion arriba ---- */
-/* ==== RESPONSIVE — tier 1024px: laptops chicas / tablets grandes.
-   Solo reduce escala (tipografía, gaps, escenas); todavía no apila nada.
-   IMPORTANTE: este bloque va DESPUÉS de todas las reglas base (arriba) — antes
-   estaba antes de .hero/.super/etc, así que la cascada lo pisaba en TODOS los
-   tamaños de pantalla, no solo en desktop. Quedaba muerto. ==== */
 @media (max-width:1024px){
   .hero h1{font-size:1.85rem;}
   .hero-inner{gap:var(--sp-6);}
@@ -363,7 +274,6 @@ footer{background:var(--footer-bg);color:#fff;padding:var(--sp-8) 32px var(--sp-
   .hero{min-height:auto;padding-top:var(--sp-8);}
   .hero-media{margin:0 auto;justify-self:center;}
 }
-/* ==== RESPONSIVE — tier 480px: teléfonos ==== */
 @media (max-width:480px){
   .hero h1{font-size:1.7rem;}
   .hero-media{max-width:280px;}
@@ -372,7 +282,6 @@ footer{background:var(--footer-bg);color:#fff;padding:var(--sp-8) 32px var(--sp-
   .store-badges{gap:var(--sp-2);}
   .store-badge{padding:8px 12px;}
 }
-/* ==== RESPONSIVE — tier 390px: el piso, teléfonos chicos ==== */
 @media (max-width:390px){
   .topbar-inner{padding:0 16px;gap:10px;}
   .logo img{height:32px;}
