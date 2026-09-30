@@ -21,6 +21,37 @@ window.addEventListener('scroll', updateHeaderState, { passive: true });
 window.addEventListener('resize', updateHeaderState);
 updateHeaderState();
 
+// ---- fondo blanco -> celeste: el color lo decide la posición real del scroll,
+//      no un degradé pintado. Progresa desde el techo de "aprende cuando quieras"
+//      hasta el techo de Super (donde el corte a navy debe ser abrupto, así que
+//      ahí el celeste ya tiene que estar al 100%) ----
+const scrollBg = document.getElementById('scrollBg');
+const transitionStart = document.querySelector('.anywhere');
+const transitionEnd = document.querySelector('.super');
+const WHITE = [255, 255, 255];
+// el color destino sale de la variable CSS --blue-scene-3 (una sola fuente de verdad:
+// si se cambia el tono en el CSS, este script lo sigue automáticamente)
+function hexToRgb(hex) {
+  const h = hex.trim().replace('#', '');
+  return [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16));
+}
+const CELESTE = hexToRgb(getComputedStyle(document.documentElement).getPropertyValue('--blue-scene-3') || '#C8ECFF');
+
+function updateScrollBg() {
+  if (!scrollBg || !transitionStart || !transitionEnd) return;
+  const startY = transitionStart.getBoundingClientRect().top + window.scrollY;
+  const endY = transitionEnd.getBoundingClientRect().top + window.scrollY;
+  const span = endY - startY;
+  const progress = span > 0 ? Math.min(1, Math.max(0, (window.scrollY - startY) / span)) : 0;
+  const rgb = WHITE.map((c, i) => Math.round(c + (CELESTE[i] - c) * progress));
+  scrollBg.style.backgroundColor = `rgb(${rgb.join(',')})`;
+}
+
+window.addEventListener('scroll', updateScrollBg, { passive: true });
+window.addEventListener('resize', updateScrollBg);
+window.addEventListener('load', updateScrollBg);
+updateScrollBg();
+
 // ---- revelado de secciones e imágenes al entrar en pantalla ----
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {

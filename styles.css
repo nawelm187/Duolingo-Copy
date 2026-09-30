@@ -18,7 +18,6 @@
   --c-hare:#AFAFAF;
   --c-swan:#E5E5E5;
   --c-polar:#F7F7F7;
-  --c-white:#FFFFFF;
   /* super duolingo: azul marino casi negro (medido de la referencia real, NO azul brillante) */
   --c-super-navy:#100F3E;
   /* azul marino del título de "aprende cuando quieras..." (muestreado de cuarta imagen duo.png) */
@@ -37,10 +36,8 @@
   --border:var(--c-swan);
   --bg-subtle:var(--c-polar);
 
-  /* escena celeste (transición blanco -> super) */
-  --blue-scene-1:#F2FAFF;   /* blanco ligeramente azulado */
-  --blue-scene-2:#DEF4FF;   /* celeste muy claro (ya existía) */
-  --blue-scene-3:#C8ECFF;   /* celeste */
+  /* celeste destino de la transición scroll blanco->super (ver script.js: hexToRgb) */
+  --blue-scene-3:#C8ECFF;
 
   --super-bg:var(--c-super-navy);
   --footer-bg:var(--c-feather);
@@ -163,7 +160,7 @@ h1,h2,h3{font-family:var(--font-display);}
 /* grid de 2 filas: el contenido principal es flexible (1fr) y se centra en el
    espacio disponible; el selector de cursos queda anclado al piso del primer
    viewport, tal como en la referencia (no es un bloque flotante con margin-top) */
-.hero{min-height:calc(100vh - var(--header-h));padding:var(--sp-8) 32px 0;position:relative;overflow:hidden;
+.hero{background:#fff;min-height:calc(100vh - var(--header-h));padding:var(--sp-8) 32px 0;position:relative;overflow:hidden;
   display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:1fr auto;}
 .hero-inner{max-width:1150px;margin:0 auto;display:grid;grid-template-columns:1fr .92fr;gap:var(--sp-7);align-items:center;width:100%;position:relative;align-self:center;}
 .hero-media{position:relative;max-width:465px;width:100%;justify-self:end;margin-right:7px;top:-31px;}
@@ -222,13 +219,18 @@ h1,h2,h3{font-family:var(--font-display);}
    alto (ver .anywhere), así que aquí NO se reinicia a blanco. Celeste
    continúa en el mismo tono sólido donde Anywhere lo dejó, como colchón
    corto antes del corte duro a Super. */
+/* fondo fijo detrás de todo el contenido: script.js le cambia el color en cada
+   scroll (blanco -> celeste) — así el cambio de color de la página pasa a medida
+   que se scrollea, no es un degradé ya pintado dentro de una sección */
+#scrollBg{position:fixed;inset:0;z-index:-1;background:#fff;}
+
 .celeste{
   position:relative;overflow:hidden;padding:var(--sp-4) 32px;
-  background:var(--blue-scene-3);
+  background:transparent;
 }
 .celeste-scene{position:relative;width:100%;height:0;max-width:1100px;margin:0 auto;}
 /* ---- features ---- */
-.feature{position:relative;overflow:hidden;}
+.feature{background:#fff;position:relative;overflow:hidden;}
 .feature-inner{max-width:1150px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-8);align-items:center;width:100%;position:relative;}
 .feature-inner.rev .txt{order:2;}
 .feature-inner.rev .media{order:1;}
@@ -251,7 +253,7 @@ h1,h2,h3{font-family:var(--font-display);}
 .feature-3 .media{justify-content:flex-end;position:relative;top:-6px;}
 .feature-4 .media img{max-width:390px;}
 .feature-4 .media{justify-content:flex-start;position:relative;top:14px;}
-.english-test{padding:var(--sp-11) 32px;}
+.english-test{background:#fff;padding:var(--sp-11) 32px;}
 .english-test .feature-inner{grid-template-columns:1fr .85fr;align-items:start;padding-top:var(--sp-6);}
 .english-test .txt{padding-top:var(--sp-5);gap:var(--sp-5);}
 .english-test .media{justify-content:flex-end;position:relative;left:14px;top:-18px;}
@@ -268,12 +270,7 @@ h1,h2,h3{font-family:var(--font-display);}
    x e y a escala 1:1 — antes la Y estaba estirada ~1.16x respecto de la X. */
 .anywhere{
   position:relative;overflow:hidden;padding:var(--sp-9) 0 var(--sp-6);
-  background:linear-gradient(180deg,
-    #fff 0%,
-    var(--blue-scene-1) 16%,
-    var(--blue-scene-2) 28%,
-    var(--blue-scene-3) 42%,
-    var(--blue-scene-3) 100%);
+  background:transparent;
 }
 .anywhere-stage{position:relative;width:100%;max-width:2400px;margin:0 auto;aspect-ratio:1502/792;container-type:inline-size;--u:calc(100cqw / 1502);}
 /* bloque título+badges: centrado en x=811u (centro medido en la referencia), tope de la 1.ª línea en y≈1u del recorte */
