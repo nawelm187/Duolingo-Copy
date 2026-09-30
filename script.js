@@ -1,33 +1,21 @@
-// ---- header: sombra sutil al scrollear + botón "EMPIEZA AHORA" que aparece cuando el del hero sale de vista ----
 const topbar = document.getElementById('topbar');
 const heroCta = document.getElementById('heroCta');
-
 function updateHeaderState() {
   if (window.scrollY > 20) topbar.classList.add('is-scrolled');
   else topbar.classList.remove('is-scrolled');
 
   if (heroCta) {
     const rect = heroCta.getBoundingClientRect();
-    // el botón del header aparece recién cuando el del hero quedó
-    // realmente tapado por el header — usa la altura REAL del header,
-    // nunca un número hardcodeado, para que CSS y JS no se desincronicen
     const heroCtaHidden = rect.bottom < topbar.offsetHeight;
     if (heroCtaHidden) topbar.classList.add('show-cta');
     else topbar.classList.remove('show-cta');
   }
 }
-
 window.addEventListener('scroll', updateHeaderState, { passive: true });
 window.addEventListener('resize', updateHeaderState);
 updateHeaderState();
-
-// ---- fondo celeste: igual que el sitio original. #bgCeleste (detrás de features + "aprende cuando
-//      quieras") pasa de opacity 0 a 1 según dónde está el techo de la sección "aprende cuando quieras":
-//      0 cuando ese techo asoma por el borde inferior de la pantalla, 1 cuando llega al borde superior.
-//      Queda en 1 mientras se sigue bajando (la sección Super lo tapa con su propio fondo). ----
 const bgCeleste = document.getElementById('bgCeleste');
 const anywhereSection = document.querySelector('.anywhere');
-
 function updateCeleste() {
   if (!bgCeleste || !anywhereSection) return;
   const vh = window.innerHeight;
@@ -35,13 +23,10 @@ function updateCeleste() {
   const progress = Math.min(1, Math.max(0, (vh - top) / vh));
   bgCeleste.style.opacity = progress.toFixed(3);
 }
-
 window.addEventListener('scroll', updateCeleste, { passive: true });
 window.addEventListener('resize', updateCeleste);
 window.addEventListener('load', updateCeleste);
 updateCeleste();
-
-// ---- revelado de secciones e imágenes al entrar en pantalla ----
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -52,9 +37,6 @@ const revealObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 
 document.querySelectorAll('.reveal, .reveal-l, .reveal-r, .reveal-scale, .reveal-rotate, .reveal-bounce').forEach(el => revealObserver.observe(el));
-
-// ---- flechas ‹ › : scrollean la fila de cursos horizontalmente y quedan
-//      disabled cuando no queda más recorrido en esa dirección ----
 document.querySelectorAll('.lang-chip-row').forEach(row => {
   const prevArrow = row.previousElementSibling;
   const nextArrow = row.nextElementSibling;
@@ -70,16 +52,9 @@ document.querySelectorAll('.lang-chip-row').forEach(row => {
   if (isArrow(nextArrow)) nextArrow.addEventListener('click', () => row.scrollBy({ left: 240, behavior: 'smooth' }));
   row.addEventListener('scroll', updateArrowState, { passive: true });
   window.addEventListener('resize', updateArrowState);
-  // las banderas son <img> y pueden seguir cargando cuando este script corre
-  // (aunque esté al final del body) — sin esto, el ancho real de la fila
-  // (scrollWidth) puede medirse antes de tiempo y dejar la flecha derecha
-  // con un estado disabled incorrecto hasta el primer resize/scroll manual
   window.addEventListener('load', updateArrowState);
   updateArrowState();
 });
-
-// ---- dropdown de "idioma de la página": el click/tap es el ÚNICO mecanismo
-//      de apertura (no hay :hover en el CSS). Funciona igual con mouse y touch. ----
 const langDropdown = document.getElementById('langDropdown');
 const langBtn = document.getElementById('langBtn');
 if (langBtn && langDropdown) {
@@ -96,8 +71,4 @@ if (langBtn && langDropdown) {
   langDropdown.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') { closeLangDropdown(); langBtn.focus(); }
   });
-  // no hace falta un listener por cada link: el click en cualquiera de ellos
-  // ya burbujea hasta el listener de document de arriba, que cierra el
-  // dropdown igual — un listener por link sería redundante (se ejecutaría
-  // closeLangDropdown() dos veces por el mismo click)
 }
